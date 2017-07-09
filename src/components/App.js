@@ -1,7 +1,6 @@
 // This component handles the App template used on every page.
 import React, {PropTypes} from 'react';
 import HtmlFooterComponent from './htmlFooter/htmlFooterComponent';
-import HtmlContentComponent from './htmlContent/htmlContentComponent';
 import HtmlSideBarComponent from './htmlSideBar/htmlSideBarComponent';
 import HtmlHeaderComponent from './htmlHeader/htmlHeaderComponent';
 

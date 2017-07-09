@@ -22,7 +22,7 @@ class HtmlSideBarComponent extends React.Component {
                 </li>
                 <li>
 
-                     <Link to={'/patientdiagnosticreport'}> <i className="pe-7s-graph" />
+                     <Link to={'/patientdiagnosticreport'}> <i className="pe-7s-note2" />
                     <p>Patient Diagnostic Report</p>                  
                     </Link>
                   

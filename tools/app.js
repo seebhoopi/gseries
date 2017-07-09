@@ -223,7 +223,15 @@ app.put('/labtest/:id', function(req, res) {
         $set: {
             "name": req.body.name,
             "age": req.body.age,
-            "email": req.body.email
+            "gender":req.body.gender,
+            "email": req.body.email,
+            "mobile":req.body.mobile,
+            "address1":req.body.address1,
+            "address2":req.body.address1,
+            "address3":req.body.address1,
+            "dcenter":req.body.dcenter,
+            "tests":req.body.tests
+
         }
     }, function(err, doc) {
         if (err) throw err;

@@ -73,9 +73,7 @@ const HtmlHeaderComponent = () => {
                 </div>
               </div>
             </nav>
-    );
-
-}
+    );};
 
 export default HtmlHeaderComponent;
 

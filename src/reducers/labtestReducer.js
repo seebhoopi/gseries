@@ -1,6 +1,7 @@
 import ActionTypes from '../constants/actionTypes';
 
-export default function labtestReducer(state = [], action) {debugger;
+export default function labtestReducer(state = [], action) {
+    //debugger;
     switch (action.type) {
         case ActionTypes.LOAD_LABTESTS_SUCCESS:
             return action.labtests;

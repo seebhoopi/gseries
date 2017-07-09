@@ -20,7 +20,8 @@ export function deleteLabtestSuccess(labtestId) {
   return { type: ActionTypes.DELETE_LABTESTS_SUCCESS, labtestId };
 }
 
-export function loadLabtests() {debugger;
+export function loadLabtests() {
+  //debugger;
   return function (dispatch) {
     return axiosCall().then(labtests => {
       dispatch(loadLabtestSuccess(labtests));
@@ -34,7 +35,8 @@ export function axiosCall(){
    return axios.get( ActionTypes.API_CALL+"labtests").then(response => response.data);
 }
 
-export function saveLabtest(labtest) {debugger;
+export function saveLabtest(labtest) {
+  //debugger;
  
   return function (dispatch) {
     if ((labtest._id).length>0 ){
