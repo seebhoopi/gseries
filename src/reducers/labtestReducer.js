@@ -6,7 +6,9 @@ export default function labtestReducer(state = [], action) {
         case ActionTypes.LOAD_LABTESTS_SUCCESS:
             return action.labtests;
 
-   
+    // case ActionTypes.LOAD_DIAGNOSTICCENTER_SUCCESS:
+    //         return action.diagnosticcenters;
+
         case ActionTypes.CREATE_LABTESTS_SUCCESS:
             return [
                 ...state,
@@ -15,13 +17,13 @@ export default function labtestReducer(state = [], action) {
 
         case ActionTypes.UPDATE_LABTESTS_SUCCESS:
             return [
-                 Object.assign({}, action.labtest),...state.filter(labtest => labtest._id !== action.labtest._id)
+                 Object.assign({}, action.labtest),...state.filter(labtest => labtest.id !== action.labtest.id)
                
             ];
         case ActionTypes.DELETE_LABTESTS_SUCCESS:
 
             return [
-                ...state.filter(labtest => labtest._id !== action.labtestId)
+                ...state.filter(labtest => labtest.id !== action.labtestId)
             ];  
     
 

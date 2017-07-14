@@ -25,6 +25,6 @@ export default (
      <Route path="labtests" component={LabtestsPage} />
     <Route path="labtestsf" component={LabtestsForm} />
     <Route path="labtestsf/:id" component={LabtestsForm} />
-
+    <Route path="labtestdf/:dcode" component={LabtestsForm} />
   </Route>
 );

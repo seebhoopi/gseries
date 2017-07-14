@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import routes from './routes';
 
 import {loadLabtests} from './actions/labtestActions';
+import {loadDiagnosticCenters} from './actions/diagnosticcenterActions';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // import '../node_modules/css/bootstrap.min.css';
 // import '../node_modules/css/animate.min.css';
@@ -39,7 +40,7 @@ const store = configureStore();
 
 
 store.dispatch(loadLabtests());
-
+store.dispatch(loadDiagnosticCenters());
 
 render(
     <Provider store={store}>

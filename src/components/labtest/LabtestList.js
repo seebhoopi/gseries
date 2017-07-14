@@ -7,8 +7,8 @@ const LabtestList = ({ labtests }) => {
         <div>
             {labtests.map(labtest =>
 
-                <div className="belement" key={labtest._id}>
-                    <Link className="belementn" to={'/labtestsf/' + labtest._id}>{labtest.dcenter}  test order from  {labtest.name}</Link>
+                <div className="belement" key={labtest.id}>
+                   <Link className="belementn" to={'/labtestsf/' + labtest.id}>{labtest.id} - {labtest.name}</Link>
 
                 </div>
 

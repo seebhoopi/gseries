@@ -295,3 +295,17 @@ body {
   font-family: sans-serif;
   font-size: 18px;
 }
+
+.floatright
+{
+  float:right;
+}
+
+.div100per
+{
+  width:100%;
+}
+.div500per
+{
+  width:50%;
+}

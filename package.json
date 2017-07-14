@@ -43,6 +43,7 @@
     "moment-range": "2.1.0",
     "mongodb": "^2.2.24",
     "nock": "^9.0.9",
+    "node-rest-client": "^3.1.0",
     "object-assign": "4.1.0",
     "react": "15.4.2",
     "react-addons-update": "^15.0.1",

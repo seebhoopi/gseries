@@ -3,9 +3,10 @@
  
  import labtests from './labtestReducer';
  
- 
+ import diagnosticcenters from './diagnosticcenterReducer';
  const rootReducer=combineReducers({
-     labtests
+     labtests,
+diagnosticcenters
  });
 
  export default rootReducer;

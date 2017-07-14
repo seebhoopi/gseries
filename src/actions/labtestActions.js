@@ -7,7 +7,10 @@ export function loadLabtestSuccess(labtests) {
   return { type: ActionTypes.LOAD_LABTESTS_SUCCESS, labtests };
 
 }
+// export function loadDiagnosticCenterSuccess(labtests) {
+//   return { type: ActionTypes.LOAD_DIAGNOSTICCENTER_SUCCESS, diagnosticcenters };
 
+// }
 export function createLabtestSuccess(labtest) {
   return { type: ActionTypes.CREATE_LABTESTS_SUCCESS, labtest };
 }
@@ -20,7 +23,7 @@ export function deleteLabtestSuccess(labtestId) {
   return { type: ActionTypes.DELETE_LABTESTS_SUCCESS, labtestId };
 }
 
-export function loadLabtests() {
+export function loadLabtests() { debugger;
   //debugger;
   return function (dispatch) {
     return axiosCall().then(labtests => {
@@ -35,11 +38,25 @@ export function axiosCall(){
    return axios.get( ActionTypes.API_CALL+"labtests").then(response => response.data);
 }
 
+// export function loadDiagnosticCenters() {
+//   //debugger;
+//   return function (dispatch) {
+//     return axiosdCall().then(diagnosticcenters => {
+//       dispatch(loadDiagnosticCenterSuccess(diagnosticcenters));
+//     }).catch(error => {
+//       throw (error);
+//     });
+//   };
+// }
+
+// export function axiosdCall(){ 
+//    return axios.get( ActionTypes.API_CALL+"diagnosticcenters").then(response => response.data);
+// }
 export function saveLabtest(labtest) {
   //debugger;
  
   return function (dispatch) {
-    if ((labtest._id).length>0 ){
+    if ((labtest.id).length>0 ){
         return axiosSaveLabtest(labtest).then(labtest => {
           dispatch(updateLabtestSuccess(labtest));            
         }).catch(error => {
@@ -59,12 +76,12 @@ export function saveLabtest(labtest) {
 
 export function axiosSaveLabtest(labtest){ 
 
- if ((labtest._id).length>0 ){
+ if ((labtest.id).length>0 ){
 
-   return axios.put(ActionTypes.API_CALL+"labtest/"+labtest._id, labtest).then(() => labtest);
+   return axios.put(ActionTypes.API_CALL+"labtest/"+labtest.id, labtest).then(() => labtest);
 
  } else {
-   labtest._id=getOrderId(labtest.dcenter?labtest.dcenter:"ord");
+   labtest.id=getOrderId(labtest.dcenter?labtest.dcenter:"ord");
    return axios.post(ActionTypes.API_CALL+"labtest",labtest).then(() => labtest);
  }
 }

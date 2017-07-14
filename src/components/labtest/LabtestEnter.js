@@ -5,9 +5,9 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
 
-const Testoptions = [{ value: 'Albumin', label: 'Albumin' },
-{ value: 'Calcium', label: 'Calcium' },
-{ value: 'Magnisium', label: 'Magnisium' }
+const Testoptions = [{ value: '5', label: 'Albumin' },
+{ value: '6', label: 'Calcium' },
+{ value: '7', label: 'Magnisium' }
 ];
 
 const LabtestEnter = ({ labtest, onChange, errors, saving, deleteEnable, allLocation, onTestChange, onSave, onDelete }) => {
@@ -24,6 +24,7 @@ const LabtestEnter = ({ labtest, onChange, errors, saving, deleteEnable, allLoca
                     value={labtest.dcenter}
                     defaultOption="Select DIagnosis Center"
                     options={allLocation}
+                   
                     onChange={onChange} error={errors.dcenter} />
             </div>
             <div className="telement ">

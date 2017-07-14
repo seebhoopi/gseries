@@ -2,10 +2,9 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as labtestActions from '../../actions/labtestActions';
-
 import LabtestEnter from './LabtestEnter';
 import toastr from 'toastr';
-
+ // locations: props.diagnosticcenters
 export class LabtestsForm extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -15,9 +14,10 @@ export class LabtestsForm extends React.Component {
             errors: {},
             saving: false,
             deleteEnable: props.deleteEnable,
-            locations: [{ value: "vert", text: "Vert Lab" },
-            { value: "ther", text: "Ther Lab" }, { value: "medi", text: "Medi lab" }],
-
+            // locations: [{ value: 'vert',label: 'Vert Lab' },
+            // { value: 'ther', label: 'Ther Lab' }, { value: 'medi', label: 'Medi lab' }],
+            // locations:locations,
+            
         };
 
         this.updateLabtestState = this.updateLabtestState.bind(this);
@@ -44,7 +44,8 @@ export class LabtestsForm extends React.Component {
         let l = options.length
             for (let i = 0; i < l; i++) {
                 if (options[i].value) {
-                tests.push(options[i].value);
+                 //tests.push(options[i].value);
+                  tests.push(options[i]);
                 }
             }
         labtest["tests"] = tests;
@@ -103,7 +104,7 @@ export class LabtestsForm extends React.Component {
             .catch(error => {
                 toastr.error(error);
                 this.setState({ saving: false });
-
+                this.redirect();
 
             });
     }
@@ -111,10 +112,10 @@ export class LabtestsForm extends React.Component {
 
     deleteLabtest(event) {
         event.preventDefault();
-        if ((this.state.labtest._id).length == 0) {
+        if ((this.state.labtest.id).length == 0) {
             return;
         }
-        this.props.actions.deleteLabtest(this.state.labtest._id)
+        this.props.actions.deleteLabtest(this.state.labtest.id)
             .then(() => this.redirect())
             .catch(error => {
                 toastr.error(error);
@@ -128,7 +129,7 @@ export class LabtestsForm extends React.Component {
 
         return (
             <div className="bcontainer">
-                <div className="form-header paraheader-labtest"><label> {this.state.labtest._id ? (this.state.labtest.dcenter + "  test order from " + this.state.labtest.name) : "New Order"} </label></div>
+                <div className="form-header paraheader-labtest"><label> {this.state.labtest.id ? (this.state.labtest.dcenter + "  test order from " + this.state.labtest.name) : "New Order"} </label></div>
                 <div>
                     <input type="button" value="Back" className="btn btn-primary btn-xs  bbtn" onClick={this.backBoards} />
 
@@ -141,7 +142,7 @@ export class LabtestsForm extends React.Component {
                     saving={this.state.saving}
                     deleteEnable={this.state.deleteEnable}
                     onDelete={this.deleteLabtest}
-                    allLocation={this.state.locations}
+                    allLocation={this.props.locations}
                     onTestChange={this.updateTestChange}
 
                 />
@@ -159,7 +160,7 @@ LabtestsForm.propTypes = {
 };
 
 function getLabtestById(labtests, id) {
-    const labtest = labtests.filter(labtest => labtest._id == id);
+    const labtest = labtests.filter(labtest => labtest.id == id);
     if (labtest) return labtest[0]; //since filter returns an array, have to grab the first.
     return null;
 }
@@ -169,12 +170,26 @@ LabtestsForm.contextTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-    const labtestId = ownProps.params.id;
+    debugger;
+    let labtestId = ownProps.params.id;
+    let dcode = ownProps.params.dcode;
     let labtest = {
-        _id: '', name: '', age: '', gender: 'Male', mobile: '', address1: '', address2: '', address3: '',
-        email: '', dcenter: '', tests: []
+        id: '', name: '', age: '', gender: 'Male', mobile: '', address1: '', address2: '', address3: '',
+        email: '', dcenter:'', tests: []
     };
+    let locations;
     let deleteEnable = true;
+
+     if (dcode) {
+       
+       labtest = {
+        id: '', name: '', age: '', gender: 'Male', mobile: '', address1: '', address2: '', address3: '',
+        email: '', dcenter: dcode, tests: []
+    };
+
+        deleteEnable = false;
+    }
+    
     if (labtestId && state.labtests.length > 0) {
         labtest = getLabtestById(state.labtests, labtestId);
 
@@ -182,7 +197,7 @@ function mapStateToProps(state, ownProps) {
     }
     return {
         labtest: labtest,
-
+        locations:locationMap(state.diagnosticcenters),
         deleteEnable: deleteEnable
     };
 }
@@ -192,5 +207,16 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(labtestActions, dispatch)
     };
 }
+function locationMap(dcenters)
+{
 
+    // { value: 'vert',label: 'Vert Lab' }
+    return dcenters.map(center => {
+        return {
+            value:center.code,
+            label:center.name
+        }
+    });
+
+}
 export default connect(mapStateToProps, mapDispatchToProps)(LabtestsForm);
