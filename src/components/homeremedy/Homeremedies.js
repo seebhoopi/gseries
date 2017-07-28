@@ -2,25 +2,25 @@ import React, { PropTypes } from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as diagnosticcenterActions from '../../actions/diagnosticcenterActions';
-import DiagnosticList from './diagnosticlists';
+import * as homeremediesActions from '../../actions/homeremediesActions';
+import HomeremediesList from './homeremedieslists';
 
 
-class HomePage extends React.Component {
+class Homeremedies extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
   render() {
-       const { diagnosticcenters } = this.props;
+       const { homeremedies } = this.props;
     return (
       <div >
    
-        <p>Patient Care Dashboard</p>
+        <p>Home Remedies</p>
 
          <div className="bcontainer" >
       
 
-        <DiagnosticList diagnosticcenters={diagnosticcenters} />
+        <HomeremediesList homeremedies={homeremedies} />
       </div>
 
       </div>
@@ -31,25 +31,25 @@ class HomePage extends React.Component {
 
 
 // export default HomePage;
-HomePage.propTypes = {
-  diagnosticcenters: PropTypes.array.isRequired,
+Homeremedies.propTypes = {
+  homeremedies: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 //Pull in the React Router context so router is available on this.context.router.
-HomePage.contextTypes = {
+Homeremedies.contextTypes = {
   router: PropTypes.object
 };
 
 function mapStateToProps(state) {
   return {
-    diagnosticcenters: state.diagnosticcenters
+    homeremedies: state.homeremedies
   };
 
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(diagnosticcenterActions, dispatch)
+    actions: bindActionCreators(homeremediesActions, dispatch)
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(Homeremedies);

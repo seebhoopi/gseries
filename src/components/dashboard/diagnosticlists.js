@@ -11,13 +11,15 @@ const DiagnosticList = ({ diagnosticcenters }) => {
 
  
  
-                <div className="belement div100per" key={diagnosticcenter.code}>
-               <div className="div50per"><b>{diagnosticcenter.name}&nbsp;</b></div>
+                <div className="belement " key={diagnosticcenter.code}>
+               <div className=" belementn dashboard-fontclr"><b>{diagnosticcenter.name}</b>
+                <div className="floatright"><Link to={"labtestdf/"+diagnosticcenter.code}>Book Test</Link> </div>
+               </div>
 
-               <div className="div50per floatright">
-                            <Link  className="belementn" to={"labtestdf/"+diagnosticcenter.code}>Book a test</Link>
-                   </div>
-                  
+               {/*
+                   
+               */}
+                
 
                 </div>
 

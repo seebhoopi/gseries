@@ -10,7 +10,7 @@ import React from 'react';
                 <nav className="pull-left">
                   <ul>
                     <li>
-                      <Link to={'/'}>Home</Link>
+                      {/*<Link to={'/'}>Home</Link>*/}
                      
                     </li>
                     {/*<li>

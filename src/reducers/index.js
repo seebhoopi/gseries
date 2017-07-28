@@ -4,9 +4,13 @@
  import labtests from './labtestReducer';
  
  import diagnosticcenters from './diagnosticcenterReducer';
+
+ import homeremedies from './homeremediesReducer';
+
  const rootReducer=combineReducers({
      labtests,
-diagnosticcenters
+    diagnosticcenters,
+    homeremedies
  });
 
  export default rootReducer;

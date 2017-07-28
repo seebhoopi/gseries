@@ -64,7 +64,20 @@ app.get('/diagnosticcenters', function(req, res) {
 var Client = require('node-rest-client').Client;
 var client = new Client();
 
-client.get("http://localhost:9090/patientcare/v1/diagnosticcenters", function (data, response) {
+client.get("http://localhost:9761/patientcare/v1/diagnosticcenters", function (data, response) {
+// parsed response body as js object 
+//console.log(docs);
+res.json(data);
+
+});
+});
+
+app.get('/homeremedies', function(req, res) {
+
+var Client = require('node-rest-client').Client;
+var client = new Client();
+
+client.get("http://localhost:9761/patientcare/v1/homeremedies", function (data, response) {
 // parsed response body as js object 
 //console.log(docs);
 res.json(data);
@@ -111,9 +124,19 @@ app.get('/labtests', function(req, res) {
 var Client = require('node-rest-client').Client;
 var client = new Client();
  console.log('I recevied a get request for boards');
-client.get("http://localhost:9091/patientcare/v1/diagnosticreports/seebhoopi@gmail.com", function (data, response) {
+client.get("http://localhost:9761/patientcare/v1/diagnosticreports", function (data, response) {
 
-res.json(data);
+// if (data == "Service Not Available")
+// {
+//      res.json(JSON.parse(data))
+// }
+
+// else
+// {
+
+// }
+    res.json(data);
+
 console.log("data  ====" + JSON.stringify(data));
 });
 });
@@ -145,7 +168,7 @@ app.post('/labtest', function(req, res) {
                     headers: { "Content-Type": "application/json" }
                 };
               
-               client.post("http://localhost:9091/patientcare/v1/diagnosticreports", args, function (data, response) {
+               client.post("http://localhost:9761/patientcare/v1/diagnosticreports", args, function (data, response) {
  
             console.log(data);
   
@@ -182,7 +205,7 @@ app.delete('/labtest/:id', function(req, res) {
                     headers: { "Content-Type": "application/json" }
                 };
               
-               client.delete("http://localhost:9091/patientcare/v1/diagnosticreports/"+id, args, function (data, response) {
+               client.delete("http://localhost:9761/patientcare/v1/diagnosticreports/"+id, args, function (data, response) {
  
             console.log(data);
   
@@ -208,7 +231,7 @@ app.put('/labtest/:id', function(req, res) {
                     headers: { "Content-Type": "application/json" }
                 };
               
-               client.put("http://localhost:9091/patientcare/v1/diagnosticreports/"+id, args, function (data, response) {
+               client.put("http://localhost:9761/patientcare/v1/diagnosticreports/"+id, args, function (data, response) {
  
             console.log(data);
   

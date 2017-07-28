@@ -9,9 +9,9 @@ class HtmlSideBarComponent extends React.Component {
             <div className="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
             <div className="sidebar-wrapper">
               <div className="logo">
-                <a href="dashboardTest.html" className="simple-text">
+                <Link to={'/dashboard'} className="simple-text"> 
                   Patient Care
-                </a>
+               </Link>
               </div>
               <ul className="nav">
                 <li className="active">

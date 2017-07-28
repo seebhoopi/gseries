@@ -10,6 +10,8 @@ import routes from './routes';
 
 import {loadLabtests} from './actions/labtestActions';
 import {loadDiagnosticCenters} from './actions/diagnosticcenterActions';
+import {loadHomeremedies} from './actions/homeremediesActions';
+
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // import '../node_modules/css/bootstrap.min.css';
 // import '../node_modules/css/animate.min.css';
@@ -41,6 +43,7 @@ const store = configureStore();
 
 store.dispatch(loadLabtests());
 store.dispatch(loadDiagnosticCenters());
+store.dispatch(loadHomeremedies());
 
 render(
     <Provider store={store}>
